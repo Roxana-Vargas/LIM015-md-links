@@ -29,3 +29,23 @@ const identifyPath = (route) => path.isAbsolute(route) ? route : path.resolve(ro
 // Función síncrona que verifica la existencia de una ruta
 const validateExist = (path) => fs.existsSync(path);
 // console.log(validateExist('../package.json'));
+
+// Función que extrae los links y devuelve un array de objetos
+const getLinks = (route) => {
+  const fileContent =  readFile(route);
+  const linkRegex = /\[([\w\s\d.|()À-ÿ]+)\]\([?:\/|https?:?\/\/]+[\w\d\s./?=#-&_%~,\-.:]+\)/gim;
+  const onlyLinkRegex = /\(((?:\/|https?:\/\/)[\w\d\s./?=#&_%~,\-.:]+)\)/gim;
+  const textLinkRegex = /\[([\w\s\d.|À-ÿ()]+)\]/gim;
+  const links = fileContent.match(linkRegex);
+  const linksArray = [];
+  links.forEach((link) => {
+    const linksObject = {
+      href: link.match(onlyLinkRegex).join().replace(/[{()}]/g, ''),
+      text: link.match(textLinkRegex).join().replace(/[\[\]']+/g, ''),
+      file: route,
+    };
+    linksArray.push(linksObject);
+  });
+  return linksArray;
+};
+// console.log(getLinks('../README.md'));
