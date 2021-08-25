@@ -30,6 +30,27 @@ const identifyPath = (route) => path.isAbsolute(route) ? route : path.resolve(ro
 const validateExist = (path) => fs.existsSync(path);
 // console.log(validateExist('../package.json'));
 
+// Función recursiva que recorra un directorio y obtenga los paths con extensión md
+
+// Función que verifica si una ruta es file o directorio (síncrono)
+const checkTypeOfPath = (path) => {
+  statsObj = fs.statSync(path);
+  let array = [];
+  if ((statsObj.isFile() && findExtMd(path)) === true ) {
+    array.push(path);
+  } else if (statsObj.isDirectory() === true) {
+    const arrayPaths = readDirectory(path);
+    arrayPaths.forEach(element => {
+      const pathsDir = joinPaths(path,element);
+      const newPaths = pathsDir;
+      const savePaths = checkTypeOfPath(newPaths);
+      array = array.concat(savePaths);
+    });
+  }
+  return array;
+};
+// console.log(checkTypeOfPath('../pruebas'));
+
 // Función que extrae los links y devuelve un array de objetos
 const getLinks = (route) => {
   const fileContent =  readFile(route);
