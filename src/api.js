@@ -70,3 +70,29 @@ const getLinks = (route) => {
   return linksArray;
 };
 // console.log(getLinks('../README.md'));
+
+// Función que devuelve el status de un archivo
+
+const object = {
+  href: 'https://developer.mozilla.org/es/docs/Wb/HTTP/Status',
+  text: 'recurso',
+  file: '../README.md'
+};
+
+const getLinkStatus  = ({ href, text, file }) => {
+  fetch(href).then((response) => {
+    const status = response.status;
+    const ok = response.ok;
+    const linkStatusObject = {
+      Href : href,
+      Txt: text,
+      File: file,
+      Status: status,
+      Ok: ok ? 'ok' : 'fail' ,
+    };
+    console.log(linkStatusObject);
+  }).catch(() => {
+    console.log('Hubo un error con la petición fetch');
+  });
+};
+getLinkStatus(object);
