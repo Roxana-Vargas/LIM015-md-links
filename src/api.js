@@ -1,6 +1,3 @@
-// module.exports = () => {
-//   // ...
-// };
 
 const fs = require('fs');
 const path = require('path');
@@ -12,7 +9,7 @@ const readFile = (file) => fs.readFileSync(file, 'utf-8');
 
 // Función síncrona que lee un directorio
 const readDirectory = (dir) => fs.readdirSync(dir);
-// console.log(readDirectory('../diagramas'));
+// console.log(readDirectory('../pruebas'));
 
 // Función síncrona que averigua la extensión de un archivo md
 const findExtMd = (file) => (path.extname(file) === '.md' );
@@ -24,7 +21,7 @@ const joinPaths = (path1, path2) => path.join(path1, path2);
 
 // Función que indentifica el tipo de ruta y la resuelve
 const identifyPath = (route) => path.isAbsolute(route) ? route : path.resolve(route);
-// console.log(identifyPath('cli.js'));
+// console.log(identifyPath('../pruebas/file.md'));
 
 // Función síncrona que verifica la existencia de una ruta
 const validateExist = (path) => fs.existsSync(path);
@@ -69,30 +66,52 @@ const getLinks = (route) => {
   });
   return linksArray;
 };
-// console.log(getLinks('../README.md'));
+// console.log(getLinks('../pruebas/file.md'));
 
 // Función que devuelve el status de un archivo
 
 const object = {
-  href: 'https://developer.mozilla.org/es/docs/Wb/HTTP/Status',
-  text: 'recurso',
-  file: '../README.md'
+  href: 'https://es.wikipedia.org/wiki/Markdown',
+  text: 'Markdown',
+  file: '../pruebas/file.md'
 };
 
 const getLinkStatus  = ({ href, text, file }) => {
-  fetch(href).then((response) => {
+  const resultFetch = fetch(href).then((response) => {
     const status = response.status;
-    const ok = response.ok;
     const linkStatusObject = {
       Href : href,
       Txt: text,
       File: file,
       Status: status,
-      Ok: ok ? 'ok' : 'fail' ,
+      Ok: status >= 200 && status <= 399 ? 'ok' : 'fail' ,
     };
-    console.log(linkStatusObject);
-  }).catch(() => {
-    console.log('Hubo un error con la petición fetch');
+    return linkStatusObject;
+  }).catch((err) => {
+    const linkStatusObjectErr = {
+      Href : href,
+      Txt: text,
+      File: file,
+      Status: 'Hubo un error con la petición fetch ' + err,
+      Ok:  'fail' ,
+    };
+    return linkStatusObjectErr;
   });
+  return resultFetch;
 };
-getLinkStatus(object);
+
+// getLinkStatus(object).then((res) => {
+//   console.log(res);
+// });
+
+module.exports = {
+  readFile,
+  readDirectory,
+  findExtMd,
+  joinPaths,
+  identifyPath,
+  validateExist,
+  checkTypeOfPath,
+  getLinks,
+  getLinkStatus,
+};
