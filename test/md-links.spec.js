@@ -115,19 +115,19 @@ describe('Function that gets status from a link', () => {
     };
     expect(api.getLinkStatus(object)).resolves.toEqual(result);
   });
-  // it('getLinkStatus() should return an object with five properties', () => {
-  //   const object = {
-  //     href: 'https://es.wikipedia.org/wiki/Markdown',
-  //     text: 'Markdown',
-  //     file: '../pruebas/file.md'
-  //   };
-  //   const result = {
-  //     Href: 'https://es.wikipedia.org/wiki/Markdown',
-  //     Txt: 'Markdown',
-  //     File: '../pruebas/file.md',
-  //     Status: 200,
-  //     Ok: 'ok'
-  //   };
-  //   expect(api.getLinkStatus(object)).resolves.toEqual(result);
-  // });
+  it('getLinkStatus() should return an object with five properties', () => {
+    const object = {
+      href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: '../pruebas/file.md'
+    };
+    const result = {
+      Href: 'https://es.wikipedia.org/wiki/Markdown',
+      Txt: 'Markdown',
+      File: '../pruebas/file.md',
+      Status: 200,
+      Ok: 'ok'
+    };
+    expect(api.getLinkStatus(object)).resolves.toEqual(result);
+  });
 });
