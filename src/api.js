@@ -21,7 +21,7 @@ const joinPaths = (path1, path2) => path.join(path1, path2);
 
 // Función que indentifica el tipo de ruta y la resuelve
 const identifyPath = (route) => path.isAbsolute(route) ? route : path.resolve(route);
-// console.log(identifyPath('../pruebas/file.md'));
+// console.log(identifyPath('../pruebas'));
 
 // Función síncrona que verifica la existencia de una ruta
 const validateExist = (path) => fs.existsSync(path);
