@@ -15,12 +15,12 @@ const mdLinks = (path, options = { validate: false }) => new Promise ((resolve, 
     pathsArray.forEach((file) => {
       arrayLinks = arrayLinks.concat(getLinks(file));
     });
-    if (options.validate === false) {
-      resolve(arrayLinks);
-    } else if (options.validate === true) {
+    if (options.validate) {
       Promise.all(arrayLinks.map((el) =>
         getLinkStatus(el))).then((res) =>
         resolve(res));
+    } else  {
+      resolve(arrayLinks);
     }
   } else {
     err = 'la ruta no existe';
@@ -28,10 +28,8 @@ const mdLinks = (path, options = { validate: false }) => new Promise ((resolve, 
   }
 });
 
-// mdLinks('../pruebas/file.md', { validate: true } ).then((res) => {
+// mdLinks('../README.md', { validate: true } ).then((res) => {
 //   console.log(res);
 // });
 
-module.exports = {
-  mdLinks,
-};
+module.exports = { mdLinks };

@@ -33,9 +33,9 @@ const validateExist = (path) => fs.existsSync(path);
 const checkTypeOfPath = (path) => {
   statsObj = fs.statSync(path);
   let array = [];
-  if ((statsObj.isFile() && findExtMd(path)) === true ) {
+  if ((statsObj.isFile() && findExtMd(path))) {
     array.push(path);
-  } else if (statsObj.isDirectory() === true) {
+  } else if (statsObj.isDirectory()) {
     const arrayPaths = readDirectory(path);
     arrayPaths.forEach(element => {
       const pathsDir = joinPaths(path,element);
@@ -51,9 +51,9 @@ const checkTypeOfPath = (path) => {
 // Función que extrae los links y devuelve un array de objetos
 const getLinks = (route) => {
   const fileContent =  readFile(route);
-  const linkRegex = /\[([\w\s\d.|()À-ÿ]+)\]\([?:\/|https?:?\/\/]+[\w\d\s./?=#-&_%~,\-.:]+\)/gim;
+  const linkRegex = /\[([\w\s\d.|()À-ÿ\-]+)\]\([?:\/|https?:?\/\/]+[\w\d\s./?=#-&_%~,\-.:]+\)/gim;
   const onlyLinkRegex = /\(((?:\/|https?:\/\/)[\w\d\s./?=#&_%~,\-.:]+)\)/gim;
-  const textLinkRegex = /\[([\w\s\d.|À-ÿ()]+)\]/gim;
+  const textLinkRegex = /\[([\w\s\d.|À-ÿ\-()]+)\]/gim;
   const links = fileContent.match(linkRegex);
   const linksArray = [];
   links.forEach((link) => {
