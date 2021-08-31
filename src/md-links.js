@@ -28,7 +28,7 @@ const mdLinks = (path, options = { validate: false }) => new Promise ((resolve, 
   }
 });
 
-// mdLinks('../README.md', { validate: true } ).then((res) => {
+// mdLinks('../pruebas/file.md', { validate: true } ).then((res) => {
 //   console.log(res);
 // });
 
