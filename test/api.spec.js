@@ -89,7 +89,7 @@ describe('function to get links from a file', () => {
         href: 'https://nodejs.org/',
         text: 'Node.js',
         file: 'C:\\Users\\user\\Desktop\\LABORATORIA\\LIM015-md-links\\pruebas\\file.md'
-      }
+      },
     ];
     expect(api.getLinks(pathFile)).toEqual(result);
   });
