@@ -13,7 +13,7 @@ const mdLinks = (path, options = { validate: false }) => new Promise ((resolve, 
     const pathsArray = checkTypeOfPath(pathResolved);
     let arrayLinks = [];
     pathsArray.forEach((file) => {
-      arrayLinks = arrayLinks.concat(getLinks(file));
+      arrayLinks =  arrayLinks.concat(getLinks(file));
     });
     if (options.validate) {
       Promise.all(arrayLinks.map((el) =>
@@ -28,7 +28,7 @@ const mdLinks = (path, options = { validate: false }) => new Promise ((resolve, 
   }
 });
 
-// mdLinks('../README.md', { validate: true } ).then((res) => {
+// mdLinks('../pruebas/pruebas2/file5.md', { validate: true }).then((res) => {
 //   console.log(res);
 // });
 

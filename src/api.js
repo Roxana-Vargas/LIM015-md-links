@@ -56,14 +56,16 @@ const getLinks = (route) => {
   const textLinkRegex = /\[([\w\s\d.|À-ÿ\-()]+)\]/gim;
   const links = fileContent.match(linkRegex);
   const linksArray = [];
-  links.forEach((link) => {
-    const linksObject = {
-      href: link.match(onlyLinkRegex).join().replace(/[{()}]/g, ''),
-      text: link.match(textLinkRegex).join().replace(/[\[\]']+/g, ''),
-      file: route,
-    };
-    linksArray.push(linksObject);
-  });
+  if (links !== null) {
+    links.forEach((link) => {
+      const linksObject = {
+        href: link.match(onlyLinkRegex).join().replace(/[{()}]/g, ''),
+        text: link.match(textLinkRegex).join().replace(/[\[\]']+/g, '').substr(0,49),
+        file: route,
+      };
+      linksArray.push(linksObject);
+    });
+  }
   return linksArray;
 };
 // console.log(getLinks('../pruebas/file.md'));
