@@ -39,6 +39,7 @@ Este proyecto, que se ejecuta usando Node.js, comprende una línea de comando (C
     `npm i roxanavargas-mdlinks`
 
 - Instalacion por github
+
     `npm i --global Roxana-Vargas/LIM015-md-links `
 
 Para hacer uso de la API es necesario importar con 
@@ -111,7 +112,7 @@ El ejecutable de nuestra aplicación se puede ejecutar de la siguiente manera a 
 `md-links <path-to-file> [options]`
 
 Por ejemplo:
-![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo1.png)
+![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo1.PNG)
 El comportamiento por defecto no valida si las URLs responden ok o no, solo identifica el archivo markdown (a partir de la ruta que recibe como argumento),
  analiza el archivo Markdown e imprime los links que vaya encontrando, junto con la ruta del archivo donde aparece y el texto que hay dentro del link 
  (truncado a 50 caracteres).
@@ -125,7 +126,7 @@ que responde ok, entonces consideraremos el link como ok.
 
 Por ejemplo:
 
-![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo2.png)
+![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo2.PNG)
 Vemos que el _output_ en este caso incluye la palabra `ok` o `fail` después de la URL, así como el status de la respuesta recibida a la petición HTTP a dicha 
 URL.
 
@@ -133,14 +134,15 @@ URL.
 
 Si pasamos la opción `--stats` el output (salida) será un texto con estadísticas básicas sobre los links.
 
-![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo3.png)
+![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo3.PNG)
 
 También podemos combinar `--stats` y `--validate` para obtener estadísticas que necesiten de los resultados de la validación.
 
-![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo4.png)
+![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo4.PNG)
 
 Y por último, si pasamos la opción `--help`, podrás obtener ayuda:
-![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo5.png)
+
+![ ](https://github.com/Roxana-Vargas/LIM015-md-links/blob/main/diagramas/ejemplo5.PNG)
 
 ## 4. Consideraciones generales
 
