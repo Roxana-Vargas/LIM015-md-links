@@ -1,9 +1,11 @@
 {
   "name": "roxanavargas-mdlinks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Este módulo busca link dentro de archivos markdown y retorna estadísticas",
   "main": "src/cli.js",
-  "bin": "src/cli.js",
+  "bin": {
+    "md-links": "src/cli.js"
+  },
   "directories": {
     "test": "test"
   },
