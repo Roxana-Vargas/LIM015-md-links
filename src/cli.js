@@ -8,8 +8,6 @@ const {
   defaultResult
 } = require('./stats.js');
 
-// console.log(process.argv.slice(2));
-
 const argv = process.argv.slice(2);
 
 if (argv.length === 1) {

@@ -28,8 +28,4 @@ const mdLinks = (path, options = { validate: false }) => new Promise ((resolve, 
   }
 });
 
-// mdLinks('../pruebas/pruebas2/file5.md', { validate: true }).then((res) => {
-//   console.log(res);
-// });
-
 module.exports = { mdLinks };

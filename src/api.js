@@ -5,31 +5,24 @@ const fetch = require ('node-fetch');
 
 // Función síncrona que lee un archivo
 const readFile = (file) => fs.readFileSync(file, 'utf-8');
-// console.log(readFile('../package.json'));
 
 // Función síncrona que lee un directorio
 const readDirectory = (dir) => fs.readdirSync(dir);
-// console.log(readDirectory('../pruebas'));
 
 // Función síncrona que averigua la extensión de un archivo md
 const findExtMd = (file) => (path.extname(file) === '.md' );
-// console.log(findExtMd('anything.md'));
 
 // Función que uno dos rutas
 const joinPaths = (path1, path2) => path.join(path1, path2);
-// console.log(joinPaths('/home/Laboratoria/', './test'));
 
 // Función que indentifica el tipo de ruta y la resuelve
 const identifyPath = (route) => path.isAbsolute(route) ? route : path.resolve(route);
-// console.log(identifyPath('../pruebas'));
 
 // Función síncrona que verifica la existencia de una ruta
 const validateExist = (path) => fs.existsSync(path);
-// console.log(validateExist('../package.json'));
 
 // Función recursiva que recorra un directorio y obtenga los paths con extensión md
 
-// Función que verifica si una ruta es file o directorio (síncrono)
 const checkTypeOfPath = (path) => {
   statsObj = fs.statSync(path);
   let array = [];
@@ -46,7 +39,6 @@ const checkTypeOfPath = (path) => {
   }
   return array;
 };
-// console.log(checkTypeOfPath('../pruebas'));
 
 // Función que extrae los links y devuelve un array de objetos
 const getLinks = (route) => {
@@ -68,15 +60,8 @@ const getLinks = (route) => {
   }
   return linksArray;
 };
-// console.log(getLinks('../pruebas/file.md'));
 
 // Función que devuelve el status de un archivo
-
-const object = {
-  href: 'https://es.wikipedia.org/wiki/Markdown',
-  text: 'Markdown',
-  file: '../pruebas/file.md'
-};
 
 const getLinkStatus  = ({ href, text, file }) => {
   const resultFetch = fetch(href).then((response) => {
@@ -101,10 +86,6 @@ const getLinkStatus  = ({ href, text, file }) => {
   });
   return resultFetch;
 };
-
-// getLinkStatus(object).then((res) => {
-//   console.log(res);
-// });
 
 module.exports = {
   readFile,

@@ -1,34 +1,8 @@
 const chalk = require('chalk');
 const { mdLinks } = require('./md-links');
 
-// Array de objetos que devuelve md links
-// const array = [
-//   {
-//     Href: 'https://es.wikipedia.org/wiki/Markdown',
-//     Txt: 'Markdown',
-//     File: 'C:\\Users\\user\\Desktop\\LABORATORIA\\LIM015-md-links\\pruebas\\file.md',
-//     Status: 404,
-//     Ok: 'fail'
-//   },
-//   {
-//     Href: 'https://nodejs.org/',
-//     Txt: 'Node.js',
-//     File: 'C:\\Users\\user\\Desktop\\LABORATORIA\\LIM015-md-links\\pruebas\\file.md',
-//     Status: 200,
-//     Ok: 'ok'
-//   },
-//   {
-//     Href: 'https://nodejs.org/',
-//     Txt: 'Node.js',
-//     File: 'C:\\Users\\user\\Desktop\\LABORATORIA\\LIM015-md-links\\pruebas\\file.md',
-//     Status: 200,
-//     Ok: 'ok'
-//   }
-// ];
-
 // Total de links
 const totalLinks = (array) => array.length;
-// console.log(totalLinks (array));
 
 // Links únicos
 const uniqueLinks = (array) => {
@@ -36,11 +10,9 @@ const uniqueLinks = (array) => {
   array.forEach((link) => uniqueLinks.add(link.Href));
   return uniqueLinks.size;
 };
-// console.log(uniqueLinks(array));
 
 // Links rotos
 const brokenLinks = (array) =>  array.filter((link) => link.Ok === 'fail').length;
-// console.log(brokenLinks(array));
 
 // Funcion para cuando option sea --stats / stats --validate
 
@@ -62,7 +34,6 @@ const validate = (path) => {
     });
   });
 };
-// validate('../pruebas');
 
 const defaultResult = (path) => {
   mdLinks(path).then((res) => {
@@ -75,7 +46,6 @@ const defaultResult = (path) => {
     }
   });
 };
-// defaultResult('../pruebas/file.md');
 
 module.exports = {
   stats,
