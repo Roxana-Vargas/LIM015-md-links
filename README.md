@@ -19,7 +19,7 @@ el tradicional `README.md`).
 Estos archivos `Markdown` normalmente contienen _links_ (vínculos/ligas) que muchas veces están rotos o ya no son válidos y eso perjudica mucho el valor 
 de la información que se quiere compartir.
 
-Marhdown Links es una herramienta que usa [Node.js](https://nodejs.org/), para leer  y analizar archivos en formato `Markdown`, para verificar los links 
+Markdown Links es una herramienta que usa [Node.js](https://nodejs.org/), para leer  y analizar archivos en formato `Markdown`, para verificar los links 
 que contengan y reportar algunas estadísticas.
 
 
